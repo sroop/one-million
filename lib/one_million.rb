@@ -1,3 +1,13 @@
+def number_to_words(number)
+  WORDS[number]
+end
+
+
+SCALE = {
+  100 => 'hundred',
+  1000 => 'thousand',
+  1000000 => 'million'
+}
 
 WORDS = {
   1 => 'one',
@@ -29,7 +39,3 @@ WORDS = {
   90 => 'ninety'
 }
 
-
-def number_to_words(number)
-  WORDS[number]
-end
