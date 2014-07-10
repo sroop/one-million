@@ -30,16 +30,25 @@ describe 'Prints one to a million in words' do
 
   end
 
-  context 'scale: 100' do
+  context 'words: 21, 56, 99' do
 
-    it 'breakdown method converts 100 to 1 with a remainder of 0 by selecting the right scale' do
-      expect(choose_scale_and_breakdown(100)).to eq[1, 0]
-    end
-
-    xit 'converts 100 to one hundred' do
-      expect(number_to_words(100)).to eq('one hundred')
+    it 'converts the number 21 into twenty one' do
+      expect(number_to_words(21)).to eq('twenty one')
+      expect(conversion(21)).to eq('twenty one')
     end
 
   end
+
+  # context 'scale: 100' do
+
+  #   it 'breakdown method converts 100 to 1 with a remainder of 0 by selecting the right scale' do
+  #     expect(choose_scale_and_breakdown(100)).to eq[1, 0]
+  #   end
+
+  #   xit 'converts 100 to one hundred' do
+  #     expect(number_to_words(100)).to eq('one hundred')
+  #   end
+
+  # end
 
 end

@@ -1,5 +1,14 @@
 def number_to_words(number)
-  WORDS[number]
+  if WORDS[number].nil?
+    conversion(number)
+  else
+    WORDS[number]
+  end
+end
+
+def conversion(number)
+  number_array = number.to_s.split("")
+  WORDS[(number_array[0] + "0").to_i] + " " + WORDS[number_array[1].to_i]
 end
 
 
