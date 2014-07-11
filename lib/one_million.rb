@@ -1,12 +1,27 @@
 def number_to_words(number)
-  if WORDS[number].nil?
-    conversion(number)
-  else
+  digits = number.to_s.length
+  case digits
+  when 3
+    hundred_conversion(number)
+  when 2
+    WORDS[number].nil? ? tens_conversion(number) : WORDS[number]
+  when 1
     WORDS[number]
   end
 end
 
-def conversion(number)
+def hundred_conversion(number)
+  number_array = number.to_s.split(//, 2)
+  part_one = WORDS[number_array[0].to_i] + " " + SCALE[100]
+  if number_array[1] != "00"
+    part_two = " and " + tens_conversion(number_array[1].to_i)
+    part_one + part_two
+  else
+    part_one
+  end
+end
+
+def tens_conversion(number)
   number_array = number.to_s.split("")
   WORDS[(number_array[0] + "0").to_i] + " " + WORDS[number_array[1].to_i]
 end
