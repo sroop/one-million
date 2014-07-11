@@ -15,6 +15,12 @@ end
 def thousand_conversion(number)
   number_array = number.to_s.split(//, 2)
   part_one = WORDS[number_array[0].to_i] + " " + SCALE[1000]
+  if number_array[1] != "000"
+    part_two = hundred_conversion(number_array[1].to_i)
+    part_one + " " + part_two
+  else
+    part_one
+  end
 end
 
 def hundred_conversion(number)
@@ -29,8 +35,12 @@ def hundred_conversion(number)
 end
 
 def tens_conversion(number)
-  number_array = number.to_s.split("")
-  WORDS[(number_array[0] + "0").to_i] + " " + WORDS[number_array[1].to_i]
+  if WORDS[number].nil?
+    number_array = number.to_s.split("")
+    WORDS[(number_array[0] + "0").to_i] + " " + WORDS[number_array[1].to_i]
+  else
+    WORDS[number]
+  end
 end
 
 

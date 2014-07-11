@@ -70,6 +70,16 @@ describe 'Prints one to a million in words' do
       expect(thousand_conversion(1000)).to eq('one thousand')
     end
 
+    it 'converts 4250 to four thousand two hundred and fifty' do
+      expect(number_to_words(4250)).to eq('four thousand two hundred and fifty')
+      expect(thousand_conversion(4250)).to eq('four thousand two hundred and fifty')
+    end
+
+    it 'converts 9999 to nine thousand nine hundred and ninety nine' do
+      expect(number_to_words(9999)).to eq('nine thousand nine hundred and ninety nine')
+      expect(thousand_conversion(9999)).to eq('nine thousand nine hundred and ninety nine')
+    end
+
   end
 
 
