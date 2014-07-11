@@ -1,6 +1,8 @@
 def number_to_words(number)
   digits = number.to_s.length
   case digits
+  when 4
+
   when 3
     hundred_conversion(number)
   when 2
@@ -9,6 +11,8 @@ def number_to_words(number)
     WORDS[number]
   end
 end
+
+ 000
 
 def hundred_conversion(number)
   number_array = number.to_s.split(//, 2)

@@ -63,4 +63,15 @@ describe 'Prints one to a million in words' do
 
   end
 
+  context 'words: 1000 and any others up to 9999' do
+
+    it 'converts 1000 to one thousand' do
+      expect(number_to_words(1000)).to eq('one thousand')
+      expect(thousand_conversion(1000)).to eq('one thousand')
+    end
+
+  end
+
+
+
 end
