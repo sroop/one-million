@@ -52,7 +52,13 @@ describe 'Prints one to a million in words' do
     end
 
     it 'converts 346 to three hundred and fourty six' do
+      expect(number_to_words(346)).to eq('three hundred and fourty six')
       expect(hundred_conversion(346)).to eq('three hundred and fourty six')
+    end
+
+    it 'converts 999 to nine hundred and ninety nine' do
+      expect(number_to_words(999)).to eq('nine hundred and ninety nine')
+      expect(hundred_conversion(999)).to eq('nine hundred and ninety nine')
     end
 
   end

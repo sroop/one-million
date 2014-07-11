@@ -30,7 +30,7 @@ end
 SCALE = {
   100 => 'hundred',
   1000 => 'thousand',
-  1000000 => 'million'
+  1000000 => 'one million'
 }
 
 WORDS = {
