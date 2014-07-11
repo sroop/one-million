@@ -2,7 +2,7 @@ def number_to_words(number)
   digits = number.to_s.length
   case digits
   when 4
-
+    thousand_conversion(number)
   when 3
     hundred_conversion(number)
   when 2
@@ -12,7 +12,10 @@ def number_to_words(number)
   end
 end
 
- 000
+def thousand_conversion(number)
+  number_array = number.to_s.split(//, 2)
+  part_one = WORDS[number_array[0].to_i] + " " + SCALE[1000]
+end
 
 def hundred_conversion(number)
   number_array = number.to_s.split(//, 2)
