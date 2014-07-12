@@ -113,5 +113,33 @@ describe 'Prints one to a million in words' do
     end
 
   end
-
 end
+
+describe 'Behind the scenes conversion methods' do
+
+  context '#number_array(number, slice_count)' do
+
+    it "converts 10 to ['1', '0']" do
+      expect(number_array(10, 1)).to eq(['1', '0'])
+    end
+
+    it "converts 345 to ['3', '45']" do
+      expect(number_array(345, 2)).to eq(['3', '45'])
+    end
+
+    it "converts 1578 to ['1', '578']" do
+      expect(number_array(1578, 3)).to eq(['1', '578'])
+    end
+
+    it "converts 12578 to ['12', '578']" do
+      expect(number_array(12578, 3)).to eq(['12', '578'])
+    end
+
+    it "converts 912578 to ['912', '578']" do
+      expect(number_array(912578, 3)).to eq(['912', '578'])
+    end
+
+  end
+end
+
+
