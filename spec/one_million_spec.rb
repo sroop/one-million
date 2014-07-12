@@ -82,6 +82,25 @@ describe 'Prints one to a million in words' do
 
   end
 
+  context 'words: 10000 and any others up to 1 million' do
+
+    it 'converts 10000 to one thousand' do
+      expect(number_to_words(10000)).to eq('ten thousand')
+      expect(thousand_conversion(10000)).to eq('ten thousand')
+    end
+
+    it 'converts 15467 to fifteen thousand four hundred and sixty seven' do
+      expect(number_to_words(15467)).to eq('fifteen thousand four hundred and sixty seven')
+      expect(thousand_conversion(15467)).to eq('fifteen thousand four hundred and sixty seven')
+    end
+
+    it 'converts 999999 to nine hundred and ninety nine thousand nine hundred and ninety nine' do
+      expect(number_to_words(999999)).to eq('nine hundred and ninety nine thousand nine hundred and ninety nine')
+      expect(thousand_conversion(999999)).to eq('nine hundred and ninety nine thousand nine hundred and ninety nine')
+    end
+
+  end
+
 
 
 end
