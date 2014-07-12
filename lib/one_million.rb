@@ -8,7 +8,7 @@ def number_to_words(number)
   when 3
     hundred_conversion(number)
   when 2
-    WORDS[number].nil? ? tens_conversion(number) : WORDS[number]
+    tens_conversion(number)
   when 1
     WORDS[number]
   end
@@ -20,13 +20,19 @@ def thousand_conversion(number)
   number_for_part_one = split_array.join("").to_i
   part_one = number_to_words(number_for_part_one) + " " + SCALE[1000]
 
-   if number_for_part_two != "000"
+   if number_for_part_two != "000" && number_for_part_two.chars[0] != "0"
     part_two = hundred_conversion(number_for_part_two.to_i)
     part_one + " " + part_two
-  else
+  elsif number_for_part_two != "000" && number_for_part_two.chars[0] == "0" && number_for_part_two.chars[1] != "0"
+    part_two = tens_conversion(number_for_part_two.to_i)
+    part_one + " " + part_two
+  elsif number_for_part_two != "000" && number_for_part_two.chars[0] == "0" && number_for_part_two.chars[1] == "0"
+    part_one + " and " + number_to_words(number_for_part_two.chars.last.to_i)
+  else 
     part_one
   end
 end
+
 
 def hundred_conversion(number)
   number_array = number.to_s.split(//, 2)
@@ -85,3 +91,5 @@ WORDS = {
   90 => 'ninety'
 }
 
+
+# (1..10000).each { |num| puts number_to_words(num) }
