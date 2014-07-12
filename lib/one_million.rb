@@ -15,14 +15,12 @@ def number_to_words(number)
 end
 
 def thousand_conversion(number)
-  split_array = number.to_s.chars
-  number_for_part_two = split_array.pop(3).join("")
-  number_for_part_one = split_array.join("").to_i
-  part_one = number_to_words(number_for_part_one) + " " + "thousand"
-  part_two = number_to_words(number_for_part_two.sub(/^[0]*/,"").to_i)
-  if number_for_part_two == "000"
+  number_array = process_number(number, 3)
+  part_one = number_to_words(number_array.first.to_i) + " thousand"
+  part_two = number_to_words(number_array.last.sub(/^[0]*/,"").to_i)
+  if number_array.last == "000"
     part_one
-  elsif number_for_part_two.chars[0] == "0"
+  elsif number_array.last[0] == "0"
     part_one + " and " + part_two
   else
     part_one + " " + part_two
@@ -30,31 +28,23 @@ def thousand_conversion(number)
 end
 
 def hundred_conversion(number)
-  number_array = number.to_s.split(//, 2)
-  part_one = WORDS[number_array[0].to_i] + " " + "hundred"
-  part_two = "and " + number_to_words(number_array[1].to_i)
-  number_array[1] == "00" ? part_one : part_one + " " + part_two
+  number_array = process_number(number, 2)
+  part_one = WORDS[number_array.first.to_i] + " hundred"
+  part_two = "and " + number_to_words(number_array.last.to_i)
+  number_array.last == "00" ? part_one : part_one + " " + part_two
 end
 
 def tens_conversion(number)
   if WORDS[number].nil?
-    number_array = number.to_s.split(//, 2)
-    WORDS[(number_array[0] + "0").to_i] + " " + WORDS[number_array[1].to_i]
+    number_array = process_number(number, 1)
+    WORDS[(number_array.first + "0").to_i] + " " + WORDS[number_array.last.to_i]
   else
     WORDS[number]
   end
 end
 
-def number_array(number, slice_count)
-  number.to_s.reverse.chars.each_slice(slice_count).map(&:join).reverse.map{|n| n.reverse }
-end
-
-def first_half(number)
-  number_array(number)[0]
-end
-
-def second_half(number)
-  number_array(number)[1]
+def process_number(number, slice_count)
+  number.to_s.reverse.chars.each_slice(slice_count).map(&:join).reverse.map{|n| n.reverse } #this converts any number into the desired array format for tens, hundreds and thousands given the slice_count
 end
 
 WORDS = {
@@ -90,5 +80,4 @@ WORDS = {
   90 => 'ninety'
 }
 
-# puts number_to_words(40050)
 # (1..10000).each { |num| puts number_to_words(num) }
