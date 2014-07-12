@@ -14,8 +14,6 @@ def number_to_words(number)
   end
 end
 
-private
-
 def thousand_conversion(number)
   number_array = process_number(number, 3)
   part_one = number_to_words(number_array.first.to_i) + " thousand"
